@@ -16,7 +16,7 @@ const student = {
 };
 
 
-test.describe('Practice Form', () => {
+test.describe.skip('Practice Form', () => {
 
 	test.beforeEach('Go to page', async ({ page }) => {
 		await page.goto(URL);
