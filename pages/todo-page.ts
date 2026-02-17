@@ -6,6 +6,7 @@ export class TodoPage {
   readonly todoItems: Locator;
   readonly todoTitles: Locator;
   readonly toggleAll: Locator;
+  readonly todoCount: Locator;
 
   constructor(page: Page) {
     this.page = page;
@@ -13,6 +14,7 @@ export class TodoPage {
     this.todoItems = page.getByTestId("todo-item");
     this.todoTitles = page.getByTestId("todo-title");
     this.toggleAll = page.getByLabel("Mark all as complete");
+    this.todoCount = page.getByTestId("todo-count");
   }
 
   async goto() {
