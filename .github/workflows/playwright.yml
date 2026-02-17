@@ -18,26 +18,21 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-
       - uses: actions/setup-node@v4
         with:
           node-version: lts/*
           cache: "npm"
-
       - name: Install dependencies
         run: npm ci
-
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps
       - name: Cache Playwright browsers
         uses: actions/cache@v4
         with:
           path: ~/.cache/ms-playwright
           key: ${{ runner.os }}-playwright-${{ hashFiles('package-lock.json') }}
-
-      - uses: microsoft/playwright-github-action@v1
-
       - name: Run Playwright tests
         run: npx playwright test --project=${{ matrix.browser }} --workers 2
-
       - uses: actions/upload-artifact@v4
         if: ${{ !cancelled() }}
         with:
