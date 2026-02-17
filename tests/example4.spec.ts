@@ -4,7 +4,7 @@ const TODO_ITEMS = ["Practice parkour", "Go bati", "Work on thesis"];
 
 test.beforeEach(async ({ todoPage, page }) => {
   await todoPage.goto();
-  await page.addInitScript(() => localStorage.clear());
+  await page.evaluate(() => localStorage.clear());
 });
 
 test.describe("New Todo", () => {
