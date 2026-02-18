@@ -1,4 +1,4 @@
-import { test, expect, Page } from "../fixtures/todo-fixtures";
+import { test, expect } from "../fixtures/todo-fixtures";
 
 const TODO_ITEMS = ["Practice parkour", "Go bati", "Work on thesis"];
 
