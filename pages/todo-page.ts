@@ -7,6 +7,10 @@ export class TodoPage {
   readonly todoTitles: Locator;
   readonly toggleAll: Locator;
   readonly todoCount: Locator;
+  readonly clearCompleted: Locator;
+  readonly allLink: Locator;
+  readonly activeLink: Locator;
+  readonly completedLink: Locator;
 
   constructor(page: Page) {
     this.page = page;
@@ -15,10 +19,26 @@ export class TodoPage {
     this.todoTitles = page.getByTestId("todo-title");
     this.toggleAll = page.getByLabel("Mark all as complete");
     this.todoCount = page.getByTestId("todo-count");
+    this.clearCompleted = page.getByRole("button", { name: "Clear completed" });
+    this.allLink = page.getByRole("link", { name: "All" });
+    this.activeLink = page.getByRole("link", { name: "Active" });
+    this.completedLink = page.getByRole("link", { name: "Completed" });
   }
 
   async goto() {
     await this.page.goto("https://demo.playwright.dev/todomvc");
+  }
+
+  async reload() {
+    await this.page.reload();
+  }
+
+  async goback() {
+    await this.page.goBack();
+  }
+
+  async goforward() {
+    await this.page.goForward();
   }
 
   async addTodo(text: string) {
